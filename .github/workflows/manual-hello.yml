@@ -1,0 +1,19 @@
+name: Manual Hello
+
+on:
+  workflow_dispatch:
+    inputs:
+      name:
+        description: Who to greet
+        required: true
+        default: World
+  push:
+    paths:
+      - .github/workflows/manual-hello.yml
+
+jobs:
+  hello:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+      - run: echo "Hello, ${{ inputs.name || 'World' }}!"
