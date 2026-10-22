@@ -9,6 +9,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Check out the code
-        uses: actions/checkout@v4   # [verify] latest major on recording day (v5 may be current)
+        uses: actions/checkout@v7
       - name: Run the tests
         run: bash test.sh
