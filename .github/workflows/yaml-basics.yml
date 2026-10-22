@@ -1,0 +1,20 @@
+# Lecture 2.3: maps, lists and multi-line run
+name: YAML Basics
+
+on: push
+
+env:                      # a map (key: value pairs)
+  COURSE: GitHub Actions
+  LEVEL: beginner
+
+jobs:
+  basics:
+    runs-on: ubuntu-latest
+    steps:                # a list: each item starts with "- "
+      - name: One-line command
+        run: echo "Course is $COURSE"
+      - name: Multi-line script
+        run: |
+          echo "Line one"
+          echo "Level is $LEVEL"
+          echo "Each line runs as its own command"
