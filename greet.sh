@@ -1,2 +1,2 @@
 #!/usr/bin/env bash
-echo "Helo, ${1:-World}!"
+echo "Hello, ${1:-World}!"
