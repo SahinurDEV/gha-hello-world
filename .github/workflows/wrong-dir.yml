@@ -1,0 +1,14 @@
+name: Wrong working directory
+
+on: push
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: scripts
+    steps:
+      - uses: actions/checkout@v7
+      - name: Run the tests
+        run: bash test.sh
