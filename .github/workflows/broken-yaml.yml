@@ -8,4 +8,4 @@ jobs:
     steps:
       - uses: actions/checkout@v7
       - name: Run the tests
-       run: bash test.sh
+        run: bash test.sh
