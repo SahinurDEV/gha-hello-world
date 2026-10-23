@@ -1,0 +1,31 @@
+name: Manual Greeting
+
+on:
+  workflow_dispatch:
+    inputs:
+      name:
+        description: "Who should we greet?"
+        type: string
+        default: "World"
+      mood:
+        description: "Pick a mood"
+        type: choice
+        options:
+          - happy
+          - calm
+          - excited
+        default: happy
+      shout:
+        description: "Shout the greeting?"
+        type: boolean
+        default: false
+
+jobs:
+  greet:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Greet
+        run: echo "Hello, ${{ inputs.name }}! You seem ${{ inputs.mood }} today."
+      - name: Shout
+        if: ${{ inputs.shout }}
+        run: echo "HELLO, ${{ inputs.name }}!!!"
