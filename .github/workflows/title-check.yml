@@ -8,5 +8,7 @@ jobs:
   title:
     runs-on: ubuntu-latest
     steps:
-      - name: Print the PR title (UNSAFE - for teaching only)
-        run: echo "PR title - ${{ github.event.pull_request.title }}"
+      - name: Print the PR title (safe)
+        env:
+          TITLE: ${{ github.event.pull_request.title }}
+        run: echo "PR title - $TITLE"
