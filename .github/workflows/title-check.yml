@@ -1,0 +1,12 @@
+name: PR title check (unsafe)
+
+on: pull_request
+
+permissions: {}
+
+jobs:
+  title:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Print the PR title (UNSAFE - for teaching only)
+        run: echo "PR title - ${{ github.event.pull_request.title }}"
