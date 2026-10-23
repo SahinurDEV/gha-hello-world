@@ -1,0 +1,26 @@
+name: Runners
+
+on:
+  workflow_dispatch:
+
+jobs:
+  linux:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Where am I?
+        shell: bash
+        run: echo "Running on $RUNNER_OS" && git --version && node --version
+
+  windows:
+    runs-on: windows-latest
+    steps:
+      - name: Where am I?
+        shell: bash
+        run: echo "Running on $RUNNER_OS" && git --version && node --version
+
+  mac:
+    runs-on: macos-latest
+    steps:
+      - name: Where am I?
+        shell: bash
+        run: echo "Running on $RUNNER_OS" && git --version && node --version
