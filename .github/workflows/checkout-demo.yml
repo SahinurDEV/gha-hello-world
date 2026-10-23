@@ -1,0 +1,13 @@
+name: Checkout Demo
+
+on:
+  workflow_dispatch:
+
+jobs:
+  files:
+    runs-on: ubuntu-latest
+    steps:
+      - name: List files
+        run: ls -la
+      - name: Run the tests
+        run: bash test.sh
