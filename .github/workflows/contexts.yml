@@ -1,0 +1,23 @@
+name: Contexts
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  inspect:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Show contexts
+        run: |
+          echo "Event:  ${{ github.event_name }}"
+          echo "Ref:    ${{ github.ref }}"
+          echo "Actor:  ${{ github.actor }}"
+          echo "Runner: ${{ runner.os }}"
+      - name: Only on push
+        if: github.event_name == 'push'
+        run: echo "This step runs on pushes, not pull requests."
+      - name: Report failure
+        if: failure()
+        run: echo "A previous step failed."
