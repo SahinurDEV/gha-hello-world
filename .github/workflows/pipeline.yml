@@ -1,0 +1,42 @@
+name: Pipeline
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+      - name: Check shell syntax
+        run: bash -n greet.sh test.sh
+
+  test:
+    needs: lint
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+      - name: Run the tests
+        run: bash test.sh
+
+  build:
+    needs: test
+    runs-on: ubuntu-latest
+    outputs:
+      version: ${{ steps.meta.outputs.version }}
+    steps:
+      - uses: actions/checkout@v7
+      - name: Pick a version
+        id: meta
+        run: echo "version=1.0.${{ github.run_number }}" >> "$GITHUB_OUTPUT"
+      - name: Build
+        run: echo "Building version ${{ steps.meta.outputs.version }}"
+
+  report:
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - name: Show the version
+        run: echo "Build job produced version ${{ needs.build.outputs.version }}"
