@@ -1,0 +1,10 @@
+name: Missing checkout
+
+on: push
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Run the tests
+        run: bash test.sh
